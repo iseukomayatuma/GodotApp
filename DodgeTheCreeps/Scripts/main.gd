@@ -1,7 +1,7 @@
 extends Node
 
 var score : int
-var mob_scene = preload("res://mob.tscn")
+var mob_scene = preload("res://Scene/mob.tscn")
 var n_score_timer
 var n_mob_timer
 var n_start_position

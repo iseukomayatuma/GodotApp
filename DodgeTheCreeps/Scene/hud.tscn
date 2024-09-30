@@ -48,7 +48,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="StardButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -65,4 +65,4 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_8iwpk")
 text = "Start"
 
-[connection signal="pressed" from="StardButton" to="." method="_on_stard_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_stard_button_pressed"]

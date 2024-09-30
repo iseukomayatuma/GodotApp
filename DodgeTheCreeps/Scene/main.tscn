@@ -29,7 +29,7 @@ curve = SubResource("Curve2D_oln2w")
 
 [node name="Player" parent="." instance=ExtResource("1_irbkx")]
 
-[node name="Hud" parent="." instance=ExtResource("3_8pjkd")]
+[node name="HUD" parent="." instance=ExtResource("3_8pjkd")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -9,7 +9,7 @@ action = &"start_game"
 [sub_resource type="Shortcut" id="Shortcut_8iwpk"]
 events = [SubResource("InputEventAction_qac74")]
 
-[node name="Hud" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4wdn")
 
 [node name="ScoreLabel" type="Label" parent="."]

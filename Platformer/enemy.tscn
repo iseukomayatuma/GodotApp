@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://0l35ck1t00jh"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_ig01l"]
+[ext_resource type="Texture2D" uid="uid://d3jv6m2nvb01k" path="res://Platformer_assets/assets/teki.png" id="2_cmfj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq8x2"]
+size = Vector2(36, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88sef"]
+size = Vector2(36, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo144"]
+size = Vector2(36, 36)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("n_sprite")]
+script = ExtResource("1_ig01l")
+n_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_cmfj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nq8x2")
+
+[node name="WeakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakArea"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_88sef")
+disabled = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_eo144")

@@ -1,0 +1,173 @@
+[gd_scene load_steps=22 format=3 uid="uid://doilcobd0mk0s"]
+
+[ext_resource type="Texture2D" uid="uid://dqg3v67ft3gpd" path="res://assets/all.png" id="1_n2un8"]
+[ext_resource type="Script" path="res://soldier.gd" id="1_q6tdw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoj2d"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(528, 816, 264, 272)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jaax"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(0, 0, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25c5y"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(267, 0, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2vkb"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(534, 0, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xtor"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(801, 0, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48mgp"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(0, 273, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deh2i"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(267, 273, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg1nh"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(534, 273, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o452"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(801, 273, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s73m0"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(0, 546, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvkw5"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(267, 546, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbwrn"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(534, 546, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tlir"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(801, 546, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nddq"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(0, 819, 254, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhvhq"]
+atlas = ExtResource("1_n2un8")
+region = Rect2(267, 819, 254, 265)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wn08r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoj2d")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jaax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25c5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2vkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xtor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48mgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deh2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg1nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o452")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s73m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvkw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbwrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tlir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nddq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhvhq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jrg5"]
+size = Vector2(130, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8npv"]
+size = Vector2(150, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tfh3"]
+size = Vector2(102, 70)
+
+[node name="Soldier" type="Node2D" node_paths=PackedStringArray("n_anim", "n_attack_collision", "n_attack_start_collision", "n_soldier_collision")]
+script = ExtResource("1_q6tdw")
+n_anim = NodePath("AnimatedSprite2D")
+n_attack_collision = NodePath("SoldierAttackArea/CollisionShape2D")
+n_attack_start_collision = NodePath("SoldierAttackStart/CollisionShape2D")
+n_soldier_collision = NodePath("SoldierArea/CollisionShape2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wn08r")
+animation = &"attack"
+offset = Vector2(0, -100)
+
+[node name="SoldierAttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoldierAttackArea"]
+position = Vector2(15, -24)
+shape = SubResource("RectangleShape2D_4jrg5")
+debug_color = Color(0.160784, 0.611765, 0.560784, 0.419608)
+
+[node name="SoldierAttackStart" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoldierAttackStart"]
+position = Vector2(30, -24)
+shape = SubResource("RectangleShape2D_j8npv")
+debug_color = Color(0.921569, 0.164706, 0.552941, 0.419608)
+
+[node name="SoldierArea" type="Area2D" parent="." groups=["soldiers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoldierArea"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_6tfh3")
+
+[connection signal="area_entered" from="SoldierAttackArea" to="." method="_on_solider_attack_area_area_entered"]
+[connection signal="area_entered" from="SoldierAttackStart" to="." method="_on_sollider_attack_start_area_entered"]
+[connection signal="area_entered" from="SoldierArea" to="." method="_on_sollider_area_area_entered"]

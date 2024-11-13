@@ -11,7 +11,7 @@ n_you_win = NodePath("Label2")
 n_you_lose = NodePath("Label3")
 
 [node name="Button" type="Button" parent="."]
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0

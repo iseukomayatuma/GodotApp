@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnv058ut5vu1u"]
+
+[ext_resource type="Script" path="res://bullettest.gd" id="1_2jg74"]
+
+[node name="BulletTest" type="Node"]
+script = ExtResource("1_2jg74")

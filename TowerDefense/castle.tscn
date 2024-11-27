@@ -14,16 +14,16 @@ bg_color = Color(0, 1, 0, 1)
 
 [node name="Castle" type="Node2D" node_paths=PackedStringArray("n_sprite", "n_health")]
 script = ExtResource("1_pr5em")
-n_sprite = NodePath("Area2D/Sprite2D")
+n_sprite = NodePath("CastleArea/Sprite2D")
 n_health = NodePath("ColorRect/ProgressBar")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CastleArea" type="Area2D" parent="."]
 position = Vector2(0, -256)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CastleArea"]
 texture = ExtResource("1_8v0q2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleArea"]
 shape = SubResource("RectangleShape2D_k8u57")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -48,3 +48,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_rv6mf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jyrsp")
 value = 100.0
 show_percentage = false
+
+[connection signal="area_entered" from="CastleArea" to="." method="_on_castle_area_area_entered"]

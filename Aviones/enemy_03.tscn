@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7ijpv5fd1k41"]
+
+[ext_resource type="Script" path="res://enemy_03.gd" id="1_g6ufr"]
+[ext_resource type="Texture2D" uid="uid://dvtf3s53oq7c1" path="res://assets/image/ships/ship_0008.png" id="1_gjtmk"]
+[ext_resource type="Texture2D" uid="uid://dji8w1uj042jg" path="res://assets/image/tiles/tile_0004.png" id="2_exvct"]
+[ext_resource type="Texture2D" uid="uid://1dvg52ulwubu" path="res://assets/image/tiles/tile_0005.png" id="3_rkymr"]
+[ext_resource type="Texture2D" uid="uid://4nfibupydmum" path="res://assets/image/tiles/tile_0006.png" id="4_iecp7"]
+[ext_resource type="Texture2D" uid="uid://c3m4hmb6pgr6" path="res://assets/image/tiles/tile_0007.png" id="5_cn8qu"]
+[ext_resource type="Texture2D" uid="uid://l046aaj386l5" path="res://assets/image/tiles/tile_0008.png" id="6_bixhi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7l74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gjtmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_exvct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rkymr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iecp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cn8qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bixhi")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq8lu"]
+size = Vector2(20, 8)
+
+[node name="Enemy_03" type="Area2D" node_paths=PackedStringArray("n_shadow", "n_anim")]
+script = ExtResource("1_g6ufr")
+n_shadow = NodePath("Sprite2D")
+n_anim = NodePath("AnimatedSprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.372549)
+position = Vector2(3, 3)
+texture = ExtResource("1_gjtmk")
+flip_v = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g7l74")
+animation = &"explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lq8lu")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -40,10 +40,14 @@ func is_dead():
 	return hp<=0
 
 # Area2Dになにかか衝突した
-func _on_area_2d_area_entered(area):
+func _on_castle_area_entered(area):
 	if area.get_parent().is_player_side==is_player_side:
 		return
 	if area.name=="SoldierAttackArea":
 		var soldier=area.get_parent()
 		#emit_signal("castle_damage",self,soldier)
 		castle_damage.emit(self,soldier)
+
+
+func _on_castle_area_area_entered(area):
+	pass # Replace with function body.

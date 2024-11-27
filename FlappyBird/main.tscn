@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfqnci34dcsci"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_r3jwy"]
+[ext_resource type="Texture2D" uid="uid://c0r1nmwdgt5yd" path="res://assets/bg_back.png" id="2_gvyfj"]
+[ext_resource type="PackedScene" uid="uid://2ohluum4y6gf" path="res://player.tscn" id="3_opdyd"]
+[ext_resource type="PackedScene" uid="uid://n6ydcnif7upw" path="res://hud.tscn" id="4_r26fg"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("n_player", "n_hud")]
+script = ExtResource("1_r3jwy")
+n_player = NodePath("Player")
+n_hud = NodePath("HUD")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gvyfj")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("3_opdyd")]
+
+[node name="HUD" parent="." instance=ExtResource("4_r26fg")]
+
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]

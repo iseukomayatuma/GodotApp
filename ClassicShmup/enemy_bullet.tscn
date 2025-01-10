@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6fji8anai5n5"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_7s158"]
+[ext_resource type="Texture2D" uid="uid://8f3rvy24ug4y" path="res://assets/Projectiles/Enemy_projectile (16 x 16).png" id="1_q73g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywiw"]
+atlas = ExtResource("1_q73g1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vdad"]
+atlas = ExtResource("1_q73g1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lucfc"]
+atlas = ExtResource("1_q73g1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yg80"]
+atlas = ExtResource("1_q73g1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jelak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iywiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vdad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lucfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yg80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nv6jw"]
+size = Vector2(6, 6)
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_7s158")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jelak")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nv6jw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
